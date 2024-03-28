@@ -23,15 +23,15 @@
                     <span class="ml-4">Dashboard</span>
                 </a>
                 <a href="#" class="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md">
-                    <x-dashboard-icon class="h-5 w-5 text-white" />
+                    <x-asset-icon class="h-5 w-5 text-white" />
                     <span class="ml-4">Asset</span>
                 </a>
                     <a href="#" class="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md">
-                    <x-dashboard-icon class="h-5 w-5 text-white" />
+                    <x-employee-icon class="h-5 w-5 text-white" />
                 <span class="ml-4">Employee</span>
                 </a>
                 <a href="#" class="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md">
-                    <x-dashboard-icon class="h-5 w-5 text-white" />
+                    <x-maintenance-icon class="h-5 w-5 text-white" />
                     <span class="ml-4">Maintenance</span>
                 </a>
                 <a href="#" class="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md">
@@ -44,9 +44,9 @@
             <a href="#" class="text-gray-300 hover:text-white">Logout</a>
         </div>
     </div>
-    <!-- Main content -->
+    <!-- Main content --> 
     <div class="flex flex-col flex-1">
-        <!-- Content here -->
+        <!-- Content here --> 
     </div>
 </div>
 
