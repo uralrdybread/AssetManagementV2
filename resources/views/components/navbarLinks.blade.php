@@ -15,7 +15,7 @@
                     <x-maintenance-icon class="h-5 w-5 text-white" />
                     <span class="ml-4">Maintenance</span>
                 </a>
-                <a href="#" class="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md">
+                <a href="{{ route('reports.index') }}" class="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md">
                     <x-report-icon class="h-5 w-5 text-white" />
                     <span class="ml-4">Reports</span>
                 </a>

@@ -1,7 +1,8 @@
 <x-layout>
     <x-navbar>
+        <body>
         <div class="container mx-auto mt-8">
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
             <label for="table-search" class="sr-only">Search</label>
             <div class="relative mt-4 ml-4 mb-4">
                 <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -60,9 +61,8 @@
                 </tbody>
             </table>
         </div>
-                    <nav class="flex items-center justify-between pt-4" aria-label="Table navigation">
-                <!-- Pagination links go here -->
-            </nav>
+                {{ $employees->links() }}
         </div>
+        </body>
     </x-navbar>
 </x-layout>

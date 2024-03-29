@@ -15,10 +15,12 @@ class AssetController extends Controller
     {
 
         // Fetch all assets from the database
-        $assets = Asset::all();
+         $assets = Asset::with('employee', 'status')->paginate(10);
 
         // Fetch all assets from the database with the 'employee' relationship eager loaded
-        $assets = Asset::with('employee', 'status')->get();
+        // $assets = Asset::with('employee', 'status')->get();
+
+        // dd($assets);
 
         // Pass the assets data to the view
         return view('assets.index', compact('assets'));
