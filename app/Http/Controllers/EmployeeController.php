@@ -22,7 +22,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employees.create');
     }
 
     /**
@@ -36,9 +36,10 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Employee $employee)
     {
-        //
+        $employee->load('assets');
+        return view('employees.show', compact('employee'));
     }
 
     /**
