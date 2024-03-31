@@ -1,55 +1,58 @@
 <x-layout>
     <x-navbar>
-        <body>
+        <form method="POST" action="{{ route('employees.store') }}">
+            @csrf
             <div class="container mx-auto mt-8">
-                <h1 class="text-2xl font-bold mb-4">Employee Details</h1>
+                <div class="space-y-12">
+                    <div class="border-b border-gray-900/10 pb-12">
+                        <h2 class="text-base font-semibold leading-7 text-gray-900">Employee Information</h2>
+                        <p class="mt-1 text-sm leading-6 text-gray-600">Enter employee details below:</p>
 
-                <!-- Employee Information -->
-                <div class="bg-white shadow-md rounded-lg p-6 mb-6">
-                    <h2 class="text-lg font-semibold mb-4">Employee Information</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <p class="text-sm text-gray-600 mb-2"><span class="font-semibold">Name:</span> {{ $employee->first_name ?? 'NA' }} {{ $employee->last_name ?? 'NA' }}</p>
-                            <p class="text-sm text-gray-600 mb-2"><span class="font-semibold">Email:</span> {{ $employee->email }}</p>
-                            <p class="text-sm text-gray-600 mb-2"><span class="font-semibold">Phone Number:</span> {{ $employee->phone_number }}</p>
-                            <p class="text-sm text-gray-600 mb-2"><span class="font-semibold">Address:</span> {{ $employee->address }}</p>
+                        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                            <div class="sm:col-span-3">
+                                <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">First Name</label>
+                                <input type="text" name="first_name" id="first_name" autocomplete="given-name"
+                                    class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+
+                            <div class="sm:col-span-3">
+                                <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">Last Name</label>
+                                <input type="text" name="last_name" id="last_name" autocomplete="family-name"
+                                    class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+
+                            <div class="sm:col-span-3">
+                                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+                                <input type="email" name="email" id="email" autocomplete="email"
+                                    class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+
+                            <div class="sm:col-span-3">
+                                <label for="alt_email" class="block text-sm font-medium leading-6 text-gray-900">Alternate Email</label>
+                                <input type="email" name="alt_email" id="alt_email" autocomplete="email"
+                                    class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+
+                            <div class="sm:col-span-3">
+                                <label for="phone" class="block text-sm font-medium leading-6 text-gray-900">Phone Number</label>
+                                <input type="tel" name="phone_number" id="phone_number" autocomplete="tel"
+                                    class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+
+                            <div class="sm:col-span-3">
+                                <label for="address" class="block text-sm font-medium leading-6 text-gray-900">Address</label>
+                                <input type="text" name="address" id="address" autocomplete="address-line1"
+                                    class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Assigned Assets -->
-                <div class="bg-white shadow-md rounded-lg p-6">
-                    <h2 class="text-lg font-semibold mb-4">Assigned Assets</h2>
-                    @if ($employee->assets->count() > 0)
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-sm text-left border-collapse">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th class="px-6 py-3">Company</th>
-                                        <th class="px-6 py-3">Model</th>
-                                        <th class="px-6 py-3">Serial</th>
-                                        <th class="px-6 py-3">History Log</th>
-                                        <th class="px-6 py-3">Assignment Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($employee->assets as $asset)
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                            <td class="px-6 py-4">{{ $asset->company }}</td>
-                                            <td class="px-6 py-4">{{ $asset->model }}</td>
-                                            <td class="px-6 py-4">{{ $asset->serial }}</td>
-                                            <td class="px-6 py-4">{{ $asset->history_log }}</td>
-                                            <td class="px-6 py-4">{{ $asset->assignment_date }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @else
-                        <p class="text-gray-600">No assets assigned.</p>
-                    @endif
+                <div class="mt-6 flex items-center justify-end gap-x-6">
+                    <x-button-component text="Add Employee" type="submit"/>
                 </div>
             </div>
-        </body>
+        </form>
     </x-navbar>
 </x-layout>
+

@@ -11,6 +11,15 @@ class Asset extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+    'company',
+    'model',
+    'serial',
+    'history_log',
+    'assignment_date',
+    'employee_id',
+    ];
+
     public function status()
     {
         return $this->belongsTo(AssetStatus::class, 'status_id');

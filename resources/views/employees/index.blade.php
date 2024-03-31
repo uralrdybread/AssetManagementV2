@@ -15,7 +15,7 @@
 
                     <!-- Add Employee Button -->
                     <div>
-                        <x-button-component text="Add Employee" />
+                        <x-button-component text="Add Employee" route="{{ route('employees.create') }}"/>
                     </div>
                 </div>
 

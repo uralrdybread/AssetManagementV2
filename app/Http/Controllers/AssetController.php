@@ -40,23 +40,36 @@ class AssetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $validatedData = $request->validate([
+            'company' => 'required|string|max:255',
+            'model' => 'required|string|max:255',
+            'serial' => 'required|string|unique:assets|max:255',
+            'history_log' => 'nullable|string',
+            'assignment_date' => 'nullable|date',
+            'employee_id' => 'nullable|exists:employees,id',
+        ]);
+
+        $asset = Asset::create($validatedData);
+
+        session()->flash('success', 'Asset created successfully.');
+
+        return redirect()->route('assets.show', $asset);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Asset $asset)
     {
-        //
+        return view('assets.show', compact('asset'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Asset $asset)
     {
-        //
+         return view('assets.edit', compact('asset'));
     }
 
     /**

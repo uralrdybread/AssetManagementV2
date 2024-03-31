@@ -30,9 +30,26 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
 
+        // dd($request->all());
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:employees|max:255',
+            'alt_email' => 'nullable|string|email|max:255',
+        ]);
+
+        $employee = Employee::create($validatedData);
+        // Create a new employee record in the database
+        // Success message
+        session()->flash('success', 'Employee created successfully.');
+
+        // Redirect the user to the newly created employee's page
+        return view('employees.show', compact('employee'));
+    }
     /**
      * Display the specified resource.
      */
