@@ -40,8 +40,12 @@
                         </div>
                         <div>
                             <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Status</label>
-                            <input type="text" name="status" id="status" autocomplete="off" value="{{ optional($asset->status)->status_name }}"
-                                class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <select name="status" id="status" class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option value="" disabled selected>Select Status</option>
+                                @foreach($statuses as $status)
+                                    <option value="{{ $status->id }}" {{ $asset->status_id == $status->id ? 'selected' : '' }}>{{ $status->status_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 

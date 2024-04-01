@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asset;
+use App\Models\AssetStatus;
 use Illuminate\Http\Request;
 
 class AssetController extends Controller
@@ -69,7 +70,9 @@ class AssetController extends Controller
      */
     public function edit(Asset $asset)
     {
-         return view('assets.edit', compact('asset'));
+        $statuses = AssetStatus::all();
+
+        return view('assets.edit', compact('asset', 'statuses'));
     }
 
     /**
@@ -83,8 +86,9 @@ class AssetController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Asset $asset)
     {
-        //
+        $asset->delete();
+        return redirect()->route('assets.index')->with('success', 'Asset deleted successfully.');
     }
 }

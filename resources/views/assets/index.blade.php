@@ -69,13 +69,10 @@
                             <td class="px-6 py-4">{{ $asset->assignment_date ?? 'N/A' }}</td>
                             <td class="px-6 py-4">{{ optional($asset->status)->status_name }}</td>
                             <td class="px-6 py-4">
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
                                 <a href="{{ route('assets.edit', $asset->id) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline ml-2">Edit</a>
-                                <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Delete</a>
-                            </td>
+                                <a href="#" onclick="confirmDelete('{{ route('assets.destroy', $asset->id) }}')" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Delete</a>
                         </tr>
                          @endforeach
-                        <!-- More asset rows can be added dynamically -->
                     </tbody>
                 </table>
             </div>
