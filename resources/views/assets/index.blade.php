@@ -70,7 +70,14 @@
                             <td class="px-6 py-4">{{ optional($asset->status)->status_name }}</td>
                             <td class="px-6 py-4">
                                 <a href="{{ route('assets.edit', $asset->id) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline ml-2">Edit</a>
-                                <a href="#" onclick="confirmDelete('{{ route('assets.destroy', $asset->id) }}')" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Delete</a>
+                                
+                                {{-- Delete button start --}}
+                                <form method="POST" action="{{ route('assets.destroy', $asset->id) }}" id="deleteForm_{{ $asset->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" onclick="confirmDelete('{{ $asset->id }}')" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Delete</button>
+                                </form>
+                                {{-- Delete button end --}}
                         </tr>
                          @endforeach
                     </tbody>

@@ -47,8 +47,7 @@ class EmployeeController extends Controller
         // Success message
         session()->flash('success', 'Employee created successfully.');
 
-        // Redirect the user to the newly created employee's page
-        return view('employees.show', compact('employee'));
+        return redirect()->route('employees.index')->with('success', 'Employee created successfully.');
     }
     /**
      * Display the specified resource.
@@ -87,8 +86,9 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect()->route('employees.index')->with('success', 'Employee deleted successfully.');
     }
 }
