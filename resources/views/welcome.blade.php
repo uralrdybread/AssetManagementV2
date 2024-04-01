@@ -1,18 +1,29 @@
-<x-layout title="Welcome to CompanyX asset Management">
-<body>
-    <!-- Include the Navbar component -->
-    <x-navbar>
-        <!-- Content to render within the navbar -->
-        <div class="flex flex-col">
-    <div class="container mx-auto mt-8">
-        <h1 class="text-3xl font-semibold text-center">Welcome to CompanyX Asset Management</h1>
-        <p class="text-lg text-center mt-4">This is the introduction</p>
-        <!-- Add any other content here -->
-    </div>
-        </div>
-    </x-navbar>
-    <!-- Include any JavaScript files if needed -->
-    <script src="{{ asset('js/app.js') }}"></script>
-</body>
-</html>
+<x-layout title="Welcome to CompanyX Asset Management">
+    <body>
+        <!-- Include the Navbar component -->
+        <x-navbar>
+
+        @guest
+            <!-- If user is not logged in -->
+            <div class="mt-8">
+                <p class="text-lg">Welcome to CompanyX Asset Management. Please {{ __('register') }} or {{ __('login') }} to continue.</p>
+                <div class="flex items-center justify-between mt-4">
+                    <a href="{{ route('register') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        {{ __('Register') }}
+                    </a>
+                    <span class="text-sm">or</span>
+                    <a href="{{ route('login') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        {{ __('Login') }}
+                    </a>
+                </div>
+            </div>
+        @else
+            <!-- If user is logged in -->
+            <div class="mt-8">
+                <p class="text-lg">Welcome back, {{ auth()->user()->name }}!</p>
+            </div>
+        @endguest
+
+        </x-navbar>
+    </body>
 </x-layout>

@@ -34,7 +34,7 @@
                     @if ($employee->assets->count() > 0)
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm text-left border-collapse">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                     <tr>
                                         <th class="px-6 py-3">Company</th>
                                         <th class="px-6 py-3">Model</th>
@@ -45,7 +45,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($employee->assets as $asset)
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                        <tr class="bg-white border-b hover:bg-gray-50">
                                             <td class="px-6 py-4">{{ $asset->company }}</td>
                                             <td class="px-6 py-4">{{ $asset->model }}</td>
                                             <td class="px-6 py-4">{{ $asset->serial }}</td>
