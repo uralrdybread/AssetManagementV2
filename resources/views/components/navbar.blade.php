@@ -14,7 +14,7 @@
     <div class="flex flex-col w-64 bg-gray-800">
         <!-- Sidebar header -->
         <div class="flex items-center justify-center h-16 bg-gray-900">
-            <span class="text-white text-lg font-semibold">Asset Management</span>
+            <a href="/" class="text-white text-lg font-semibold">Asset Management</a>
         </div>
         <!-- Sidebar links -->
         <x-navbarlinks />

@@ -78,9 +78,24 @@ class AssetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, Asset $asset)
+{
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'company' => 'required|string|max:255',
+        'model' => 'required|string|max:255',
+        'serial' => 'required|string|max:255|unique:assets,serial,' . $asset->id,
+        'history_log' => 'nullable|string',
+        'assignment_date' => 'nullable|date',
+        'employee_id' => 'nullable|exists:employees,id',
+        'status' => 'nullable|exists:asset_statuses,id',
+    ]);
+
+    // Update the asset record in the database
+    $asset->update($validatedData);
+
+    // Redirect the user to the asset's page
+    return redirect()->route('assets.show', $asset)->with('success', 'Asset updated successfully.');
     }
 
     /**

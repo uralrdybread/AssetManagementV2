@@ -13,4 +13,6 @@ Route::resource('assets', AssetController::class);
 
 Route::resource('employees', EmployeeController::class);
 
-Route::resource('reports', ReportsController::class);
+Route::resource('reports', ReportsController::class)->only([
+    'index'
+]);
