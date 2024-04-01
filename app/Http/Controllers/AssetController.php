@@ -12,19 +12,19 @@ class AssetController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        // Fetch all assets from the database
-         $assets = Asset::with('employee', 'status')->paginate(10);
+    // Get the search query from the request
+    $search = $request->input('search');
 
-        // Fetch all assets from the database with the 'employee' relationship eager loaded
-        // $assets = Asset::with('employee', 'status')->get();
+    // Query assets based on the search query
+    $assets = Asset::with('employee', 'status')
+                    ->where('serial', 'like', '%' . $search . '%')
+                    ->paginate(10);
 
-        // dd($assets);
-
-        // Pass the assets data to the view
-        return view('assets.index', compact('assets'));
+    // Pass the assets data to the view
+    return view('assets.index', compact('assets'));
 
     }
 
