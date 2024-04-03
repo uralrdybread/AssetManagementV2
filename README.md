@@ -22,18 +22,16 @@
 
 - **Enhanced Notification System:** Implement a better notification system with popup notifications for successful procedures. Utilize Alpine.js for smooth transition effects, enhancing user interaction and feedback.
 
-
-![assets](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/51aa6bf2-8281-444b-b546-721a3a6ed50e)
-![assetssearch](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/f0e34e23-c5c3-4720-a1fb-8bf1a9749052)
-![createasset](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/b26b564e-94c7-4a38-a3ee-9ba88a9b8e02)
-![editAsset](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/0f4d9b17-932e-46e6-838c-6c5ff60ae63f)
-![employees](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/9d8ba770-c5d8-48af-80a4-066fa5f3cf09)
-![employeeshow](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/83544da1-5621-4bb4-8a42-11804cbd7907)
-![maintenanceAdmin](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/82267f84-bb73-4f03-ba0c-824853f8e4a2)
-![nologin](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/1426c6c0-2b92-4f3e-b4d7-c26b720ac4ba)
-![reports](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/7b332330-720a-40fb-9e79-a870429d6037)
-![welcome](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/13952eb8-d283-4c6f-8e24-c49b4816b1ac)
-
+![welcome](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/a7a58bd0-f230-4fb2-b000-986281bbb04f)
+![reports](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/e6325b38-6ea2-4b94-a070-d195a5999aa8)
+![nologin](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/a6dfaafd-9c01-4488-9f46-d27b9cbc4ee5)
+![maintenanceAdmin](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/45d20131-f2aa-4960-94a2-a118d4bf5ec2)
+![employeeshow](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/9c60d98f-d9d8-44a6-a947-56777d6ae26c)
+![employees](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/bd04f80b-defe-4f21-aa36-04f0e93e511e)
+![editAsset](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/1170c605-469e-48ba-b7ed-764e6df405e6)
+![createasset](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/13c6a5f5-199f-4d96-97a6-30c8cf8d717e)
+![assetssearch](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/4a5a201b-78ae-4d01-888a-b82fade1c372)
+![assets](https://github.com/uralrdybread/AssetManagementV2/assets/48900828/6836a3f3-6613-47a1-bf83-a91cf75c5d0e)
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
