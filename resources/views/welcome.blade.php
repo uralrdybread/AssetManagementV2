@@ -2,28 +2,32 @@
     <body>
         <!-- Include the Navbar component -->
         <x-navbar>
-
-        @guest
-            <!-- If user is not logged in -->
-            <div class="mt-8">
-                <p class="text-lg">Welcome to CompanyX Asset Management. Please {{ __('register') }} or {{ __('login') }} to continue.</p>
-                <div class="flex items-center justify-between mt-4">
-                    <a href="{{ route('register') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        {{ __('Register') }}
-                    </a>
-                    <span class="text-sm">or</span>
-                    <a href="{{ route('login') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        {{ __('Login') }}
-                    </a>
+            <div class="container mx-auto mt-8">
+                @guest
+                <!-- If user is not logged in -->
+                <div class="mt-8 flex flex-wrap items-center justify-center">
+                    <div class="max-w-lg lg:max-w-full mr-8">
+                        <p class="text-lg text-center text-gray-700">
+                            Welcome to CompanyX Asset Management. Please 
+                            <a href="{{ route('register') }}" class="underline text-indigo-600 hover:text-indigo-900">register</a> or 
+                            <a href="{{ route('login') }}" class="underline text-indigo-600 hover:text-indigo-900">login</a> to continue.
+                            If you are an employee requiring help with your device please click on maintenance after registering.
+                        </p>
+                    </div>
+                    <div class="mt-8 max-w-lg lg:max-w-full">
+                        <img src="{{ asset('images/assetlifecycle.png') }}" alt="Asset Lifecycle Image" class="max-w-full border-4 border-indigo-600 rounded-lg shadow-lg">
+                    </div>
                 </div>
+                @else
+                <!-- If user is logged in -->
+                <div class="mt-8 text-center">
+                    <p class="text-lg text-gray-700">Welcome back, {{ auth()->user()->name }}!</p>
+                </div>
+                <div class="mt-8 max-w-lg lg:max-w-full">
+                    <img src="{{ asset('images/assetlifecycle.png') }}" alt="Asset Lifecycle Image" class="max-w-full border-4 border-indigo-600 rounded-lg shadow-lg">
+                </div>
+                @endguest
             </div>
-        @else
-            <!-- If user is logged in -->
-            <div class="mt-8">
-                <p class="text-lg">Welcome back, {{ auth()->user()->name }}!</p>
-            </div>
-        @endguest
-
         </x-navbar>
     </body>
 </x-layout>

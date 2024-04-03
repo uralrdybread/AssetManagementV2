@@ -1,5 +1,6 @@
 <x-layout>
     <x-navbar>
+        <div class="container mx-auto mt-8">
         <form method="POST" action="{{ route('employees.store') }}">
             @csrf
             <div class="container mx-auto mt-8">
@@ -53,6 +54,7 @@
                 </div>
             </div>
         </form>
+    </div>
     </x-navbar>
 </x-layout>
 
