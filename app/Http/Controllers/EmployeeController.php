@@ -52,7 +52,7 @@ class EmployeeController extends Controller
         $employee = Employee::create($validatedData);
         // Create a new employee record in the database
         // Success message
-        session()->flash('success', 'Employee created successfully.');
+        // session()->flash('success', 'Employee created successfully.');
 
         return redirect()->route('employees.index')->with('success', 'Employee created successfully.');
     }

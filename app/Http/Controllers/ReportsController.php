@@ -9,7 +9,7 @@ class ReportsController extends Controller
 {
     public function index()
 {
-    // Retrieve devices meeting the criteria
+    // Retrieve devices meeting the 3 month criteria
     $assets = Asset::whereRaw('TIMESTAMPDIFF(MONTH, assignment_date, NOW()) >= ?', [34])->get();
 
     // Load associated employee data
