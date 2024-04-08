@@ -7,43 +7,25 @@
                 <form method="POST" action="{{ route('assets.update', $asset->id) }}">
                     @csrf
                     @method('PUT')
-                    <div class="grid grid-cols-2 gap-x-4">
+                    <div class="grid grid-cols-2 gap-x-4 mx-10">
+                        <x-formField name="employee_id" label="Employee ID" :value="$asset->employee_id" width="w-32" />
+                        <x-formField name="company" label="Company" :value="$asset->company" width="w-80" />
+                        <x-formField name="model" label="Model" :value="$asset->model" width="w-80" />
+                        <x-formField name="serial" label="Serial Number" :value="$asset->serial" width="w-80" />
+                        <x-formHistory name="history_log" label="History Log" :value="$asset->history_log" rows="8" />
+                        <x-formField name="assignment_date" label="Assignment Date" :value="$asset->assignment_date" type="date"
+                            width="w-65" />
                         <div>
-                            <label for="employee_id" class="block text-sm font-medium leading-6 text-gray-900">Employee ID</label>
-                            <input type="text" name="employee_id" id="employee_id" autocomplete="off" value="{{ $asset->employee_id }}"
-                                class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                        <div>
-                            <label for="company" class="block text-sm font-medium leading-6 text-gray-900">Company</label>
-                            <input type="text" name="company" id="company" autocomplete="off" value="{{ $asset->company }}"
-                                class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                        <div>
-                            <label for="model" class="block text-sm font-medium leading-6 text-gray-900">Model</label>
-                            <input type="text" name="model" id="model" autocomplete="off" value="{{ $asset->model }}"
-                                class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                        <div>
-                            <label for="serial" class="block text-sm font-medium leading-6 text-gray-900">Serial Number</label>
-                            <input type="text" name="serial" id="serial" autocomplete="off" value="{{ $asset->serial }}"
-                                class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                        <div>
-                            <label for="history_log" class="block text-sm font-medium leading-6 text-gray-900">History Log</label>
-                            <textarea name="history_log" id="history_log" rows="3"
-                                class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ $asset->history_log }}</textarea>
-                        </div>
-                        <div>
-                            <label for="assignment_date" class="block text-sm font-medium leading-6 text-gray-900">Assignment Date</label>
-                            <input type="date" name="assignment_date" id="assignment_date" value="{{ $asset->assignment_date }}"
-                                class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                        <div>
-                            <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Status</label>
-                            <select name="status" id="status" class="block w-full rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <label for="status"
+                                class="block text-sm font-medium leading-6 text-gray-900">Status</label>
+                            <select name="status" id="status"
+                                class="block w-60 rounded-md border-gray-300 py-2 px-3 text-gray-900 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 <option value="" disabled selected>Select Status</option>
-                                @foreach($statuses as $status)
-                                    <option value="{{ $status->id }}" {{ $asset->status_id == $status->id ? 'selected' : '' }}>{{ $status->status_name }}</option>
+                                @foreach ($statuses as $status)
+                                    <option value="{{ $status->id }}"
+                                        {{ $asset->status_id == $status->id ? 'selected' : '' }}>
+                                        {{ $status->status_name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

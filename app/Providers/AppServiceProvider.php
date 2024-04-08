@@ -28,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('components.icons.report-icon', 'report-icon');
 
         Blade::component('components.buttons.button-component', 'button-component');
+
+        Blade::component('components.forminputs.formField', 'formField');
+        Blade::component('components.forminputs.formHistory', 'formHistory');
     }
 }

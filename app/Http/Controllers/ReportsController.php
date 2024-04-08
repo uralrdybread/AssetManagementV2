@@ -4,26 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Asset;
+use Illuminate\Support\Facades\DB;
 
 class ReportsController extends Controller
 {
     public function index()
 {
-    // Retrieve devices meeting the 3 month criteria
-    $assets = Asset::whereRaw('TIMESTAMPDIFF(MONTH, assignment_date, NOW()) >= ?', [34])->get();
+        // Retrieve devices meeting the 3 month criteria
+        $assets = Asset::whereRaw('TIMESTAMPDIFF(MONTH, assignment_date, NOW()) >= ?', [34])->get();
 
-    // Load associated employee data
-    $assets->load('employee');
+        // Load associated employee data
+        $assets->load('employee');
 
-    // Retrieve all assets
-    $allAssets = Asset::all();
+        // Paginate the unassigned assets query
+        $unassignedAssets = DB::table('assets')
+            ->leftJoin('employees', 'assets.employee_id', '=', 'employees.id')
+            ->select('assets.*')
+            ->whereNull('employees.id')
+            ->orWhereNull('assets.assignment_date')
+            ->paginate(5); 
 
-    // Filter assets without an employee ID or assignment date
-    $unassignedAssets = $allAssets->filter(function ($asset) {
-        return !$asset->employee_id || !$asset->assignment_date;
-    });
-
-    // Return the view with devices data
-    return view('reports.index', compact('assets', 'unassignedAssets'));
+        // Return the view with devices data
+        return view('reports.index', compact('assets', 'unassignedAssets'));
 }
 }

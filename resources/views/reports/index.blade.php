@@ -13,13 +13,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($assets as $asset)
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4">{{ $asset->employee->first_name ?? 'NA' }} {{ $asset->employee->last_name ?? 'NA' }}</td>
-                            <td class="px-6 py-4">{{ $asset->employee->email }}</td>
-                            <td class="px-6 py-4">{{ $asset->assignment_date ?? 'N/A' }}</td>
-                            <td class="px-6 py-4">{{ $asset->serial }}</td>
-                        </tr>
+                        @foreach ($assets as $asset)
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">{{ $asset->employee->first_name ?? 'NA' }}
+                                    {{ $asset->employee->last_name ?? 'NA' }}</td>
+                                <td class="px-6 py-4">{{ $asset->employee->email ?? 'N/A' }}</td>
+                                <td class="px-6 py-4">{{ $asset->assignment_date ?? 'N/A' }}</td>
+                                <td class="px-6 py-4">{{ $asset->serial }}</td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -27,32 +28,41 @@
 
             <h1 class="text-2xl font-bold mt-8 mb-4">Unassigned Devices</h1>
             @if ($unassignedAssets->count() > 0)
-            <div class="overflow-x-auto shadow-md sm:rounded-lg mt-4">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">ID</th>
-                            <th scope="col" class="px-6 py-3">Device Serial</th>
-                            <th scope="col" class="px-6 py-3">Company</th>
-                            <th scope="col" class="px-6 py-3">Model</th>
-                            <th scope="col" class="px-6 py-3">Log</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($unassignedAssets as $asset)
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4"><a href="{{ route('assets.show', $asset->id) }}">{{ $asset->id }}</td>
-                            <td class="px-6 py-4">{{ $asset->serial }}</td>
-                            <td class="px-6 py-4">{{ $asset->company }}</td>
-                            <td class="px-6 py-4">{{ $asset->model }}</td>
-                            <td class="px-6 py-4">{{ $asset->history_log }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                <div class="overflow-x-auto shadow-md sm:rounded-lg mt-4">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                        <!-- Table headers -->
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">ID</th>
+                                <th scope="col" class="px-6 py-3">Device Serial</th>
+                                <th scope="col" class="px-6 py-3">Company</th>
+                                <th scope="col" class="px-6 py-3">Model</th>
+                                <th scope="col" class="px-6 py-3">Log</th>
+                            </tr>
+                        </thead>
+                        <!-- Table body -->
+                        <tbody>
+                            @foreach ($unassignedAssets as $asset)
+                                <tr class="bg-white border-b">
+                                    <!-- Display asset details -->
+                                    <td class="px-6 py-4"><a
+                                            href="{{ route('assets.show', $asset->id) }}">{{ $asset->id }}</td>
+                                    <td class="px-6 py-4">{{ $asset->serial }}</td>
+                                    <td class="px-6 py-4">{{ $asset->company }}</td>
+                                    <td class="px-6 py-4">{{ $asset->model }}</td>
+                                    <td class="px-6 py-4">{{ $asset->history_log }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Display pagination links -->
+                <div class="mt-4 mx-10">
+                    {{ $unassignedAssets->links() }}
+                </div>
             @else
-            <p class="text-gray-600 mt-4">No unassigned devices found.</p>
+                <!-- Display message if no unassigned devices found -->
+                <p class="text-gray-600 mt-4">No unassigned devices found.</p>
             @endif
         </div>
     </x-navbar>
